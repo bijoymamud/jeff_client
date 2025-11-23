@@ -28,9 +28,7 @@
 
 }
 
-/* -------------------------
-   TEXT COLORS
--------------------------- */
+
 .text-title {
     color: var(--color-title);
 }
@@ -55,9 +53,7 @@
     color: var(--color-background);
 }
 
-/* -------------------------
-   BACKGROUND COLORS
--------------------------- */
+
 .bg-title {
     background-color: var(--color-title);
 }

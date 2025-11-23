@@ -69,7 +69,7 @@ export default function Navbar() {
             <img
               src={Logo}
               alt="Jeff Logo"
-              className="h-14 w-auto object-contain"
+              className="md:h-14 h-10 w-auto object-contain"
             />
           </Link>
         </div>
@@ -97,7 +97,7 @@ export default function Navbar() {
 
         <button
           onClick={toggleMenu}
-          className="md:hidden text-white p-2 rounded-lg hover:bg-white/10 transition-all"
+          className="md:hidden text-white md:p-2 rounded-lg hover:bg-white/10 transition-all"
           aria-label="Toggle menu"
         >
           {isOpen ? (

@@ -1,119 +1,3 @@
-// import { useState } from "react";
-// import { Star, ChevronDown } from "lucide-react";
-
-// const TestimonialCard = ({ testimonial }) => {
-//   const [isExpanded, setIsExpanded] = useState(false);
-
-//   const displayText = isExpanded
-//     ? testimonial.text
-//     : testimonial.text.substring(0, 150) + "...";
-
-//   return (
-//     <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
-//       {/* Star Rating */}
-//       <div className="flex items-center gap-2 mb-4">
-//         <div className="flex gap-0.5">
-//           {[...Array(5)].map((_, i) => (
-//             <Star
-//               key={i}
-//               size={16}
-//               className={
-//                 i < 4
-//                   ? "fill-yellow-400 text-yellow-400"
-//                   : "fill-gray-300 text-gray-300"
-//               }
-//             />
-//           ))}
-//         </div>
-//         <span className="text-sm text-blue-600 font-medium">
-//           Verified Clients
-//         </span>
-//       </div>
-
-//       {/* Testimonial Text */}
-//       <p className="text-gray-700 text-sm mb-4 leading-relaxed">
-//         "{displayText}"
-//       </p>
-
-//       {/* Show More Link */}
-//       <button
-//         onClick={() => setIsExpanded(!isExpanded)}
-//         className="text-gray-600 text-sm font-medium flex items-center gap-1 mb-6 hover:text-gray-900"
-//       >
-//         Show {isExpanded ? "less" : "more"} <ChevronDown size={16} />
-//       </button>
-
-//       {/* User Info */}
-//       <div className="flex items-center gap-3">
-//         <img
-//           src="/diverse-user-avatars.png"
-//           alt={testimonial.author}
-//           className="w-10 h-10 rounded-full bg-gray-300"
-//         />
-//         <div>
-//           <p className="font-semibold text-gray-900 text-sm">
-//             {testimonial.author}
-//           </p>
-//           <p className="text-gray-500 text-xs">{testimonial.handle}</p>
-//         </div>
-//       </div>
-
-//       {/* Date */}
-//       <p className="text-gray-500 text-xs mt-3">{testimonial.date}</p>
-//     </div>
-//   );
-// };
-
-// export default function Testimonials() {
-//   const testimonials = [
-//     {
-//       text: "Working with SSE has been a game-changer for our projects. Their forged steel solutions are consistently high-quality, delivered on time, and tailored to our exact specifications. Reliability and precision – they truly set the industry standard.",
-//       author: "Alex Vo",
-//       handle: "@alex.Payne90",
-//       date: "23 Nov 2021",
-//     },
-//     {
-//       text: "Working with SSE has been a game-changer for our projects. Their forged steel solutions are consistently high-quality, delivered on time, and tailored to our exact specifications. Reliability and precision – they truly set the industry standard.",
-//       author: "Alex Vo",
-//       handle: "@alex.Payne90",
-//       date: "23 Nov 2021",
-//     },
-//     {
-//       text: "Working with SSE has been a game-changer for our projects. Their forged steel solutions are consistently high-quality, delivered on time, and tailored to our exact specifications. Reliability and precision – they truly set the industry standard.",
-//       author: "Alex Vo",
-//       handle: "@alex.Payne90",
-//       date: "23 Nov 2021",
-//     },
-//   ];
-
-//   return (
-//     <section className="py-16 px-4 ">
-//       <div className="max-w-7xl mx-auto">
-//         {/* Title */}
-//         <h2 className="text-4xl font-bold text-center text-gray-900 mb-12">
-//           Testimonials
-//         </h2>
-
-//         {/* Cards Grid */}
-//         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-//           {testimonials.map((testimonial, index) => (
-//             <TestimonialCard key={index} testimonial={testimonial} />
-//           ))}
-//         </div>
-
-//         {/* View All Link */}
-//         <div className="flex justify-end">
-//           <a href="#" className="text-blue-600 font-medium hover:text-blue-700">
-//             View All
-//           </a>
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }
-
-"use client";
-
 import { useState, useEffect, useRef } from "react";
 import { Star, ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -124,8 +8,7 @@ const TestimonialCard = ({ testimonial }) => {
     : testimonial.text.substring(0, 150) + "...";
 
   return (
-    <div className="b rounded-lg p-6 shadow-md  border-2 border-gray-200 flex flex-col h-full">
-      {/* Stars */}
+    <div className="bg-white rounded-lg p-5 sm:p-6 shadow-md border-2 border-gray-200 flex flex-col h-full">
       <div className="flex items-center gap-2 mb-4">
         <div className="flex gap-0.5">
           {[...Array(5)].map((_, i) => (
@@ -142,16 +25,14 @@ const TestimonialCard = ({ testimonial }) => {
         </div>
       </div>
 
-      {/* Text */}
-      <p className="text-gray-700 text-sm leading-relaxed flex-1 mb-4">
+      <p className="text-gray-700 text-sm sm:text-base leading-relaxed flex-1 mb-4">
         "{displayText}"
       </p>
 
-      {/* Show more */}
       {testimonial.text.length > 150 && (
         <button
           onClick={() => setIsExpanded(!isExpanded)}
-          className="text-gray-600 text-sm font-medium flex items-center gap-1 mb-6 hover:text-gray-900"
+          className="text-gray-600 text-sm font-medium flex items-center gap-1 mb-6 hover:text-gray-900 transition-colors"
         >
           Show {isExpanded ? "less" : "more"}
           <ChevronDown
@@ -161,18 +42,19 @@ const TestimonialCard = ({ testimonial }) => {
         </button>
       )}
 
-      {/* Author */}
       <div className="flex items-center gap-3 mt-auto">
         <img
           src={testimonial.img}
-          alt=""
-          className="rounded-full w-14 h-14 object-cover"
+          alt={testimonial.author}
+          className="rounded-full w-12 h-12 sm:w-14 sm:h-14 object-cover border-2 border-gray-200"
         />
         <div>
-          <p className="font-semibold text-gray-900 text-sm">
+          <p className="font-semibold text-gray-900 text-sm sm:text-base">
             {testimonial.author}
           </p>
-          <p className="text-gray-500 text-xs">{testimonial.handle}</p>
+          <p className="text-gray-500 text-xs sm:text-sm">
+            {testimonial.handle}
+          </p>
         </div>
       </div>
       <p className="text-gray-500 text-xs mt-3">{testimonial.date}</p>
@@ -222,10 +104,8 @@ export default function Testimonials() {
     },
   ];
 
-  const cardsToShow = 3;
   const totalSlides = testimonials.length;
 
-  // Auto-slide every 5 seconds
   useEffect(() => {
     timeoutRef.current = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % totalSlides);
@@ -243,67 +123,77 @@ export default function Testimonials() {
     setCurrentIndex((prev) => (prev + 1) % totalSlides);
   };
 
+  // Responsive logic
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+  const slidesToShow = isMobile ? 1 : 3;
+  const translateValue = -(currentIndex * (100 / slidesToShow));
+
   return (
-    <section className="py-16 px-4 ">
+    <section className="py-12 sm:py-16 ">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl font-bold text-center text-gray-900 mb-12">
+        <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-12 md:mb-16">
           What Our Clients Say
         </h2>
 
         {/* Carousel Container */}
-        <div
-          className="relative"
-          onMouseEnter={() => clearInterval(timeoutRef.current)}
-          onMouseLeave={() => {
-            timeoutRef.current = setInterval(() => {
-              setCurrentIndex((prev) => (prev + 1) % totalSlides);
-            }, 5000);
-          }}
-        >
-          <div className="overflow-hidden">
+        <div className="relative">
+          {/* Left Arrow - Always outside, only visible on md+ */}
+          <button
+            onClick={goPrev}
+            className="hidden md:block absolute left-[-80px] top-1/2 -translate-y-1/2 z-30 bg-white shadow-2xl rounded-full p-2 hover:cursor-pointer hover:scale-110 transition-all border border-gray-300"
+            aria-label="Previous"
+          >
+            <ChevronLeft size={30} className="text-gray-800" />
+          </button>
+
+          {/* Right Arrow - Always outside */}
+          <button
+            onClick={goNext}
+            className="hidden md:block absolute right-[-80px] top-1/2 -translate-y-1/2 z-30 bg-white shadow-2xl rounded-full p-2 hover:cursor-pointer hover:scale-110 transition-all border border-gray-300"
+            aria-label="Next"
+          >
+            <ChevronRight size={30} className="text-gray-800" />
+          </button>
+
+          {/* Carousel Track */}
+          <div
+            className="overflow-hidden"
+            onMouseEnter={() => clearInterval(timeoutRef.current)}
+            onMouseLeave={() => {
+              timeoutRef.current = setInterval(() => {
+                setCurrentIndex((prev) => (prev + 1) % totalSlides);
+              }, 5000);
+            }}
+          >
             <div
               className="flex transition-transform duration-700 ease-in-out"
-              style={{
-                transform: `translateX(-${
-                  currentIndex * (100 / cardsToShow)
-                }%)`,
-              }}
+              style={{ transform: `translateX(${translateValue}%)` }}
             >
               {testimonials.map((testimonial, index) => (
-                <div key={index} className="w-full md:w-1/3 flex-shrink-0 px-3">
+                <div
+                  key={index}
+                  className={`flex-shrink-0 ${
+                    isMobile ? "w-full px-0" : "w-1/3 px-4" // This creates proper gap between cards on md+
+                  }`}
+                >
                   <TestimonialCard testimonial={testimonial} />
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Left Arrow */}
-          <button
-            onClick={goPrev}
-            className="absolute left-0 top-1/2 -translate-y-1/2  shadow-lg rounded-full p-3 hover:scale-110 transition-all z-10"
-          >
-            <ChevronLeft size={28} className="text-gray-800" />
-          </button>
-
-          {/* Right Arrow */}
-          <button
-            onClick={goNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2  shadow-lg rounded-full p-3 hover:scale-110 transition-all z-10"
-          >
-            <ChevronRight size={28} className="text-gray-800" />
-          </button>
-
           {/* Dots */}
-          <div className="flex justify-center gap-2 mt-10">
+          <div className="flex justify-center gap-3 mt-10">
             {[...Array(totalSlides)].map((_, i) => (
               <button
                 key={i}
                 onClick={() => setCurrentIndex(i)}
                 className={`transition-all duration-300 ${
                   i === currentIndex
-                    ? "w-10 h-2 bg-title rounded-full"
-                    : "w-2 h-2 bg-gray-400 rounded-full"
+                    ? "w-12 h-2 bg-title rounded-full"
+                    : "w-2 h-2 bg-gray-400 rounded-full hover:bg-gray-600"
                 }`}
+                aria-label={`Go to slide ${i + 1}`}
               />
             ))}
           </div>
