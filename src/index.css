@@ -1,0 +1,95 @@
+@font-face {
+    font-family: "DO5";
+    src: url("/src/assets/fonts/D05Standard.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap");
+
+@import "tailwindcss";
+
+@theme {
+    --font-do5: "DO5", "Space Grotesk", sans-serif;
+}
+
+:root {
+    font-family: var(--font-do5);
+
+    --color-title: #020202;
+    --color-navbar: #000000;
+    --color-label: #868686;
+    --color-button: #F6F2FF;
+    --color-background: #6941C6;
+    --color-paragraph: #dce1eb;
+    --color-dark-gray: #6A707C;
+    --color-icon: #E9DFFF;
+    --color-input: #FBF9FF;
+
+}
+
+/* -------------------------
+   TEXT COLORS
+-------------------------- */
+.text-title {
+    color: var(--color-title);
+}
+
+.text-navbar {
+    color: var(--color-navbar);
+}
+
+.text-label {
+    color: var(--color-label);
+}
+
+.text-dark-gray {
+    color: var(--color-dark-gray);
+}
+
+.text-paragraph {
+    color: var(--color-paragraph);
+}
+
+.text-background {
+    color: var(--color-background);
+}
+
+/* -------------------------
+   BACKGROUND COLORS
+-------------------------- */
+.bg-title {
+    background-color: var(--color-title);
+}
+
+.bg-navbar {
+    background-color: var(--color-navbar);
+}
+
+.bg-button {
+    background-color: var(--color-button);
+}
+
+.bg-label {
+    background-color: var(--color-label);
+}
+
+.bg-dark-gray {
+    background-color: var(--color-dark-gray);
+}
+
+.bg-paragraph {
+    background-color: var(--color-paragraph);
+}
+
+.bg-background {
+    background-color: var(--color-background);
+}
+
+.bg-icon {
+    background-color: var(--color-icon);
+}
+
+.bg-input {
+    background-color: var(--color-input);
+}
