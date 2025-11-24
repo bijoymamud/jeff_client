@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Phone, Mail } from "lucide-react";
 import { Link } from "react-router";
@@ -6,21 +5,23 @@ import { FaFacebook } from "react-icons/fa6";
 import { RiInstagramFill } from "react-icons/ri";
 import { BsLinkedin } from "react-icons/bs";
 import Logo from "../assets/jeff_logo.png";
+import DarkLogo from "../assets/darkLogoJeff.png";
 
 const Footer = () => {
   return (
     <footer className=" py-12 border-t-2 border-white">
-      <div className="mx-auto px-6 sm:px-8 lg:px-20 max-w-7xl">
+      <div className="mx-auto px-6 sm:px-8 lg:px-20">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-12">
           <div className="space-y-6">
             <div className="flex items-center">
+              <img src={Logo} alt="Logo" className=" w-auto dark:hidden" />
               <img
-                src={Logo}
-                alt="D05 Engineering Logo"
-                className="h-12 w-auto"
+                src={DarkLogo}
+                alt="Dark Logo"
+                className=" w-auto hidden dark:block"
               />
             </div>
-            <p className="text-gray-600 text-sm sm:text-base max-w-xs leading-relaxed">
+            <p className="text-gray-600 dark:text-white text-sm sm:text-base max-w-xs leading-relaxed">
               We offer Structural & Misc metal design assist, Stair design & PE
               & Calculation.
             </p>
@@ -28,12 +29,14 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div className="space-y-4">
-            <h3 className="text-gray-900 font-semibold text-lg">Quick Links</h3>
+            <h3 className="text-gray-900 font-semibold text-lg dark:text-white">
+              Quick Links
+            </h3>
             <ul className="space-y-3">
               <li>
                 <a
                   href="#"
-                  className="text-gray-600 hover:text-gray-900 transition block text-sm sm:text-base"
+                  className="text-gray-600 hover:text-gray-900 transition block text-sm sm:text-base dark:text-white"
                 >
                   Home
                 </a>
@@ -41,7 +44,7 @@ const Footer = () => {
               <li>
                 <Link
                   to="/about"
-                  className="text-gray-600 hover:text-gray-900 transition block text-sm sm:text-base"
+                  className="text-gray-600 hover:text-gray-900 transition block text-sm sm:text-base dark:text-white"
                 >
                   About us
                 </Link>
@@ -49,7 +52,7 @@ const Footer = () => {
               <li>
                 <Link
                   to="/projects"
-                  className="text-gray-600 hover:text-gray-900 transition block text-sm sm:text-base"
+                  className="text-gray-600 hover:text-gray-900 transition block text-sm sm:text-base dark:text-white"
                 >
                   Our Projects
                 </Link>
@@ -57,7 +60,7 @@ const Footer = () => {
               <li>
                 <Link
                   to="/testimonials"
-                  className="text-gray-600 hover:text-gray-900 transition block text-sm sm:text-base"
+                  className="text-gray-600 hover:text-gray-900 transition block text-sm sm:text-base dark:text-white"
                 >
                   Testimonials
                 </Link>
@@ -67,23 +70,23 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div className="space-y-4">
-            <h3 className="text-gray-900 font-semibold text-lg">
+            <h3 className="text-gray-900 font-semibold text-lg dark:text-white">
               Contact Links
             </h3>
             <div className="space-y-5">
               <a
                 href="mailto:Jryant@d05eng.com"
-                className="flex items-center gap-3 text-gray-600 hover:text-gray-900 transition text-sm sm:text-base"
+                className="flex items-center gap-3 text-gray-600  transition text-sm sm:text-base dark:text-white"
               >
                 <Mail className="w-5 h-5 flex-shrink-0" />
-                <span>Jryant@d05eng.com</span>
+                <span>jryan@d05eng.com</span>
               </a>
               <a
                 href="tel:+18032643390"
-                className="flex items-center gap-3 text-gray-600 hover:text-gray-900 transition text-sm sm:text-base"
+                className="flex items-center gap-3 text-gray-600  transition text-sm sm:text-base dark:text-white"
               >
                 <Phone className="w-5 h-5 flex-shrink-0" />
-                <span>(803) 264-3390</span>
+                <span>(862)254-3390</span>
               </a>
 
               {/* Social Icons */}
@@ -91,23 +94,23 @@ const Footer = () => {
                 <a
                   href="#"
                   aria-label="Facebook"
-                  className="text-gray-600 hover:text-gray-900 transition"
+                  className="text-gray-600  transition"
                 >
-                  <FaFacebook className="w-6 h-6" />
+                  <FaFacebook className="w-6 h-6 dark:text-white" />
                 </a>
                 <a
                   href="#"
                   aria-label="Instagram"
-                  className="text-gray-600 hover:text-gray-900 transition"
+                  className="text-gray-600  transition"
                 >
-                  <RiInstagramFill className="w-6 h-6" />
+                  <RiInstagramFill className="w-6 h-6 dark:text-white" />
                 </a>
                 <a
                   href="#"
                   aria-label="LinkedIn"
-                  className="text-gray-600 hover:text-gray-900 transition"
+                  className="text-gray-600  transition"
                 >
-                  <BsLinkedin className="w-6 h-6" />
+                  <BsLinkedin className="w-6 h-6 dark:text-white" />
                 </a>
               </div>
             </div>

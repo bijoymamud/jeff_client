@@ -9,9 +9,9 @@ const Home = () => {
   return (
     <div className="bg-[#F7F7F7]">
       <Banner />
+      <Testimonials />
       <AboutUs />
       <OurProjects />
-      <Testimonials />
       <RequestQuote />
     </div>
   );

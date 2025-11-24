@@ -6,18 +6,17 @@ const RequestQuote = () => {
   return (
     <section>
       <div
-        className="relative h-[60vh] w-full rounded-xl overflow-hidden "
+        className="relative h-[60vh] w-full  "
         style={{
           backgroundImage: `url(${bgImage})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
       >
-        {/* Overlay (optional) */}
+        <div className="absolute inset-0 bg-black/50" />
 
-        {/* Text */}
-        <div className="relative z-10 h-full py-[60px]">
-          <h1 className="text-white text-3xl md:text-4xl font-semibold text-center">
+        <div className="relative z-10 h-full py-[60px] flex flex-col justify-start items-center text-center px-4">
+          <h1 className="text-white text-3xl md:text-4xl font-semibold">
             Let’s Build Your Vision Together.
           </h1>
           <p className="text-center md:w-[800px] mx-auto py-[24px] text-white/80 px-3 md:px-0">

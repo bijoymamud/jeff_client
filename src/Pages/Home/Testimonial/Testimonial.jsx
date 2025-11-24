@@ -8,7 +8,7 @@ const TestimonialCard = ({ testimonial }) => {
     : testimonial.text.substring(0, 150) + "...";
 
   return (
-    <div className="bg-white rounded-lg p-5 sm:p-6 shadow-md border-2 border-gray-200 flex flex-col h-full">
+    <div className="bg-white dark:bg-[#111827] dark:border-none rounded-lg p-5 sm:p-6 shadow-md border-2 border-gray-200 flex flex-col h-full">
       <div className="flex items-center gap-2 mb-4">
         <div className="flex gap-0.5">
           {[...Array(5)].map((_, i) => (
@@ -129,9 +129,9 @@ export default function Testimonials() {
   const translateValue = -(currentIndex * (100 / slidesToShow));
 
   return (
-    <section className="py-12 sm:py-16 ">
+    <section id="testimonial" className="py-12 sm:py-16 dark:bg-[#030712]">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-12 md:mb-16">
+        <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 dark:text-white mb-12 md:mb-16">
           What Our Clients Say
         </h2>
 
@@ -140,19 +140,19 @@ export default function Testimonials() {
           {/* Left Arrow - Always outside, only visible on md+ */}
           <button
             onClick={goPrev}
-            className="hidden md:block absolute left-[-80px] top-1/2 -translate-y-1/2 z-30 bg-white shadow-2xl rounded-full p-2 hover:cursor-pointer hover:scale-110 transition-all border border-gray-300"
+            className="hidden md:block absolute left-[-80px] top-1/2 -translate-y-1/2 z-30 bg-white dark:bg-[#111827] shadow-2xl rounded-full p-2 hover:cursor-pointer hover:scale-110 transition-all border border-gray-300"
             aria-label="Previous"
           >
-            <ChevronLeft size={30} className="text-gray-800" />
+            <ChevronLeft size={30} className="text-gray-800 dark:text-white" />
           </button>
 
           {/* Right Arrow - Always outside */}
           <button
             onClick={goNext}
-            className="hidden md:block absolute right-[-80px] top-1/2 -translate-y-1/2 z-30 bg-white shadow-2xl rounded-full p-2 hover:cursor-pointer hover:scale-110 transition-all border border-gray-300"
+            className="hidden md:block absolute right-[-80px] top-1/2 -translate-y-1/2 z-30 dark:bg-[#111827] bg-white shadow-2xl rounded-full p-2 hover:cursor-pointer hover:scale-110 transition-all border border-gray-300"
             aria-label="Next"
           >
-            <ChevronRight size={30} className="text-gray-800" />
+            <ChevronRight size={30} className="text-gray-800 dark:text-white" />
           </button>
 
           {/* Carousel Track */}
@@ -173,7 +173,7 @@ export default function Testimonials() {
                 <div
                   key={index}
                   className={`flex-shrink-0 ${
-                    isMobile ? "w-full px-0" : "w-1/3 px-4" // This creates proper gap between cards on md+
+                    isMobile ? "w-full px-0" : "w-1/3 px-4"
                   }`}
                 >
                   <TestimonialCard testimonial={testimonial} />
@@ -190,8 +190,8 @@ export default function Testimonials() {
                 onClick={() => setCurrentIndex(i)}
                 className={`transition-all duration-300 ${
                   i === currentIndex
-                    ? "w-12 h-2 bg-title rounded-full"
-                    : "w-2 h-2 bg-gray-400 rounded-full hover:bg-gray-600"
+                    ? "w-12 h-2 bg-[#030712] rounded-full dark:bg-gray-600"
+                    : "w-2 h-2 bg-[#030712] dark:bg-gray-600 rounded-full hover:bg-gray-600"
                 }`}
                 aria-label={`Go to slide ${i + 1}`}
               />

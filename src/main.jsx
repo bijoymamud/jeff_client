@@ -5,7 +5,8 @@ import { router } from "./routes/routes.jsx";
 import { RouterProvider } from "react-router";
 import { store } from "./redux/store";
 import { Provider } from "react-redux";
-import LoadingScreen from "./LoadingPages/LoadingScreen";
+import { WebLoading } from "./LoadingPages/WebLoading";
+import { ThemeProvider } from "./Themes/Themes";
 
 function DelayedFallback({ children }) {
   const [showApp, setShowApp] = useState(false);
@@ -18,19 +19,22 @@ function DelayedFallback({ children }) {
     return () => clearTimeout(timer);
   }, []);
 
-  return showApp ? children : <LoadingScreen />;
+  return showApp ? children : <WebLoading />;
 }
 
 createRoot(document.getElementById("root")).render(
-  <Provider store={store}>
-    <div>
-      <StrictMode>
-        <Suspense fallback={<LoadingScreen />}>
-          <DelayedFallback>
-            <RouterProvider router={router} />
-          </DelayedFallback>
-        </Suspense>
-      </StrictMode>
-    </div>
-  </Provider>
+  <ThemeProvider>
+    <Provider store={store}>
+      <div>
+        <StrictMode>
+          {/* <Suspense fallback={<LoadingScreen />}> */}
+          <Suspense fallback={<WebLoading />}>
+            <DelayedFallback>
+              <RouterProvider router={router} />
+            </DelayedFallback>
+          </Suspense>
+        </StrictMode>
+      </div>
+    </Provider>
+  </ThemeProvider>
 );

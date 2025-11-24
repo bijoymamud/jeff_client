@@ -3,6 +3,7 @@ import Logo from "../../../../src/assets/jeff_logo.png";
 import { Link } from "react-router";
 import { useState, useEffect, useRef } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import DarkLogo from "../../../../src/assets/jeff_gray_logo.png";
 
 const projects = [
   {
@@ -161,7 +162,7 @@ function HoverCarousel({ images, onImageClick }) {
   );
 }
 
-export default function OurProjects() {
+export default function   OurProjects() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -206,9 +207,12 @@ export default function OurProjects() {
 
   return (
     <>
-      <section id="projects" className="w-full py-12 md:py-16 ">
+      <section
+        id="projects"
+        className="w-full py-12 md:py-16 dark:bg-[#030712]"
+      >
         <div className="mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 md:mb-16 text-title">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 md:mb-16 text-[#020202] dark:text-white">
             Our Projects
           </h2>
 
@@ -225,24 +229,41 @@ export default function OurProjects() {
                 />
 
                 <div className="p-5 md:p-6 flex flex-col gap-3 md:gap-4">
-                  <p className="text-xs text-background md:text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+                  <p className="text-xs text-background md:text-sm font-semibold  uppercase tracking-wider text-muted-foreground">
                     {project.category}
                   </p>
 
                   <div className="flex items-start justify-between gap-3">
-                    <h3 className="text-xl md:text-2xl font-bold text-foreground leading-tight">
+                    <h3 className="text-xl md:text-2xl font-bold text-text-[#020202] dark:text-white leading-tight">
                       {project.title}
                     </h3>
-                    <ArrowUpRight className="w-5 h-5 md:w-6 md:h-6 text-primary mt-1 flex-shrink-0" />
+                    <div
+                      onImageClick={(i) => openModal(project, i)}
+                      className="bg-gray-200 rounded-full p-1 h-10 w-10 flex items-center justify-center border-2 border-white"
+                    >
+                      <ArrowUpRight
+                        onClick={() => openModal(project, 0)}
+                        className="w-5 h-5 md:w-6 md:h-6 text-primary mt-1 flex-shrink-0"
+                      />
+                    </div>
                   </div>
 
-                  <p className="text-muted-foreground text-sm line-clamp-2">
+                  <p className="text-muted-foreground text-[#020202] dark:text-white text-sm line-clamp-2">
                     {project.description}
                   </p>
 
                   <div className="flex items-center gap-3 pt-3 md:pt-4 border-t border-border">
-                    <img src={Logo} alt="Logo" className="h-4 md:h-5 w-auto" />
-                    <span className="text-xs md:text-sm text-muted-foreground">
+                    <img
+                      src={Logo}
+                      alt="Logo"
+                      className="h-4 md:h-5 w-auto dark:hidden"
+                    />
+                    <img
+                      src={DarkLogo}
+                      alt="Dark Logo"
+                      className="h-4 md:h-5 w-auto hidden dark:block"
+                    />
+                    <span className="text-xs md:text-sm text-muted-foreground dark:text-white">
                       {project.date}
                     </span>
                   </div>
@@ -254,7 +275,7 @@ export default function OurProjects() {
           <div className="flex justify-center md:justify-end mt-10 md:mt-12">
             <Link
               to="/projects"
-              className="text-sm md:text-base font-medium hover:underline transition-colors"
+              className="text-sm md:text-base text-[#030712] dark:text-white font-medium hover:underline transition-colors"
             >
               View All →
             </Link>
@@ -262,7 +283,6 @@ export default function OurProjects() {
         </div>
       </section>
 
-      {/* Fullscreen Modal - Mobile Optimized */}
       {selectedProject && (
         <div
           className="fixed inset-0 z-[100] flex items-center justify-center bg-black"
@@ -272,7 +292,6 @@ export default function OurProjects() {
             className="relative w-full h-full flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Close Button - Larger touch target on mobile */}
             <button
               onClick={closeModal}
               className="absolute top-4 right-4 z-50 text-white p-2 bg-black/50 rounded-full"
@@ -280,7 +299,6 @@ export default function OurProjects() {
               <X className="w-8 h-8 md:w-10 md:h-10" />
             </button>
 
-            {/* Main Image */}
             <div className="flex-1 flex items-center justify-center p-4 md:px-10">
               <img
                 src={selectedProject.carouselImages[currentImageIndex]}
@@ -289,7 +307,6 @@ export default function OurProjects() {
               />
             </div>
 
-            {/* Navigation Arrows - Bigger & better placed on mobile */}
             <button
               onClick={goToPrev}
               className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 backdrop-blur p-3 md:p-4 rounded-full transition"

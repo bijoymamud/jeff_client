@@ -9,6 +9,9 @@
 
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+
 @theme {
     --font-do5: "DO5", "Space Grotesk", sans-serif;
 }

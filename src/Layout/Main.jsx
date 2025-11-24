@@ -5,13 +5,13 @@ import { Outlet } from "react-router";
 
 const Main = () => {
   return (
-    <div className="bg-[#F7F7F7]">
+    <div className="bg-[#F7F7F7] dark:bg-[#030712]">
       <Navbar />
 
       <Wrapper>
         <Outlet />
       </Wrapper>
-        <Footer />
+      <Footer />
     </div>
   );
 };

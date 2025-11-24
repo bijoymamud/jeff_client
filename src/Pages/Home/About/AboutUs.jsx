@@ -1,3 +1,5 @@
+
+
 import about_img from "../../../../src/assets/images/about_us.png";
 import img from "../../../../src/assets/images/img.png";
 
@@ -5,10 +7,11 @@ export function AboutUs() {
   return (
     <section
       id="about_us"
-      className="w-full min-h-screen flex items-center justify-center py-12  md:px-8 lg:px-16"
+      className="w-full min-h-screen flex items-center justify-center py-12 dark:bg-[#030712] md:px-8 lg:px-16"
     >
       <div className="max-w-7xl mx-auto w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-start lg:items-center">
+          {/* Image Section */}
           <div className="relative order-1 lg:order-1">
             <div className="relative w-full h-[400px] sm:h-[500px] lg:h-[600px] overflow-visible">
               <img
@@ -17,6 +20,7 @@ export function AboutUs() {
                 className="object-cover w-full h-full rounded-lg lg:rounded-none shadow-lg"
               />
 
+              {/* Top Left Label */}
               <div
                 className="
                   absolute 
@@ -36,6 +40,7 @@ export function AboutUs() {
                 </div>
               </div>
 
+              {/* Bottom Right Label */}
               <div
                 className="
                   absolute 
@@ -62,12 +67,12 @@ export function AboutUs() {
 
           {/* Text Content */}
           <div className="flex flex-col justify-center order-2 lg:order-2 mt-24 lg:mt-0">
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-title mb-6 lg:mb-8 text-center md:text-start">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#020202] dark:text-white mb-6 lg:mb-8 text-center md:text-start">
               About us
             </h2>
 
-            <div className="space-y-5 sm:space-y-6 text-gray-700 text-base sm:text-lg leading-relaxed">
-              <p className="text-label text-[17px] sm:text-[18px] text-justify">
+            <div className="space-y-5 sm:space-y-6 text-gray-700 dark:text-gray-300 text-base sm:text-lg leading-relaxed">
+              <p className="text-label text-[17px] sm:text-[18px] text-justify dark:text-gray-300">
                 At SSE, we are committed to delivering uncompromising strength,
                 precision, and reliability through our forged steel solutions.
                 With years of industry expertise, we specialize in manufacturing
@@ -75,7 +80,7 @@ export function AboutUs() {
                 toughest industrial demands.
               </p>
 
-              <p className="text-label text-[17px] sm:text-[18px] text-justify">
+              <p className="text-label text-[17px] sm:text-[18px] text-justify dark:text-gray-300">
                 Our work is driven by innovation, craftsmanship, and a
                 relentless focus on quality. From raw material to finished
                 product, every stage of our process reflects our dedication to
@@ -84,20 +89,31 @@ export function AboutUs() {
                 and exceed expectations.
               </p>
 
-              <p className="text-label text-[17px] sm:text-[18px] text-justify">
-                <span className="font-semibold text-title">At SSE</span>, we
-                don&apos;t just forge steel —<br className="sm:hidden" />
-                we forge <span className="font-semibold text-title">trust</span>
-                ,<span className="font-semibold text-title">durability</span>,
-                and{" "}
-                <span className="font-semibold text-title">
+              <p className="text-label text-[17px] sm:text-[18px] text-justify  dark:text-gray-300">
+                <span className="font-semibold text-[#020202] dark:text-white">
+                  At SSE
+                </span>
+                , we don&apos;t just forge steel —
+                <br className="sm:hidden" />
+                we forge{" "}
+                <span className="font-semibold text-[#020202] dark:text-white">
+                  trust
+                </span>
+                ,
+                <span className="font-semibold text-[#020202] dark:text-white">
+                  {" "}
+                  durability
+                </span>
+                , and{" "}
+                <span className="font-semibold text-[#020202] dark:text-white">
+                  {" "}
                   long-term value
                 </span>
                 .
               </p>
 
-              {/* Signature/Decorative Image */}
-              <div className="flex justify-center sm:justify-end mt-8 lg:mt-0">
+              {/* Signature / Decorative Image */}
+              <div className="flex dark:hidden justify-center sm:justify-end mt-8 lg:mt-0">
                 <img
                   src={img}
                   alt="Signature"
