@@ -25,14 +25,14 @@ const TestimonialCard = ({ testimonial }) => {
         </div>
       </div>
 
-      <p className="text-gray-700 text-sm sm:text-base leading-relaxed flex-1 mb-4">
+      <p className="text-gray-700 dark:text-gray-200 text-sm sm:text-base leading-relaxed flex-1 mb-4">
         "{displayText}"
       </p>
 
       {testimonial.text.length > 150 && (
         <button
           onClick={() => setIsExpanded(!isExpanded)}
-          className="text-gray-600 text-sm font-medium flex items-center gap-1 mb-6 hover:text-gray-900 transition-colors"
+          className="text-gray-700 dark:text-gray-200 text-sm font-medium flex items-center gap-1 mb-6 hover:text-gray-900 hover:dark:text-gray-200 transition-colors"
         >
           Show {isExpanded ? "less" : "more"}
           <ChevronDown
@@ -49,15 +49,15 @@ const TestimonialCard = ({ testimonial }) => {
           className="rounded-full w-12 h-12 sm:w-14 sm:h-14 object-cover border-2 border-gray-200"
         />
         <div>
-          <p className="font-semibold text-gray-900 text-sm sm:text-base">
+          <p className="font-semibold text-gray-900 dark:text-gray-200 text-sm sm:text-base">
             {testimonial.author}
           </p>
           <p className="text-gray-500 text-xs sm:text-sm">
             {testimonial.handle}
+            <p className="text-gray-500 text-xs">{testimonial.date}</p>
           </p>
         </div>
       </div>
-      <p className="text-gray-500 text-xs mt-3">{testimonial.date}</p>
     </div>
   );
 };

@@ -162,7 +162,7 @@ function HoverCarousel({ images, onImageClick }) {
   );
 }
 
-export default function   OurProjects() {
+export default function OurProjects() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -216,57 +216,61 @@ export default function   OurProjects() {
             Our Projects
           </h2>
 
-          {/* Mobile: 1 column | Tablet: 2 | Desktop unchanged */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-6">
             {projects.map((project) => (
               <div
                 key={project.id}
-                className="bg-card border border-gray-200 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group cursor-pointer"
+                className="bg-card border border-gray-200 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 
+                 overflow-hidden group cursor-pointer flex flex-col h-full"
               >
-                <HoverCarousel
-                  images={project.carouselImages}
-                  onImageClick={(i) => openModal(project, i)}
-                />
+                {/* Image Carousel */}
+                <div onClick={() => openModal(project, 0)}>
+                  <HoverCarousel images={project.carouselImages} />
+                </div>
 
-                <div className="p-5 md:p-6 flex flex-col gap-3 md:gap-4">
-                  <p className="text-xs text-background md:text-sm font-semibold  uppercase tracking-wider text-muted-foreground">
+                <div className="p-5 md:p-6 flex flex-col flex-1 gap-3 md:gap-4">
+                  <p className="text-xs md:text-sm font-semibold uppercase tracking-wider text-[#BEA2FF]">
                     {project.category}
                   </p>
 
                   <div className="flex items-start justify-between gap-3">
-                    <h3 className="text-xl md:text-2xl font-bold text-text-[#020202] dark:text-white leading-tight">
+                    <h3 className="text-xl md:text-2xl font-bold text-[#020202] dark:text-white leading-tight">
                       {project.title}
                     </h3>
-                    <div
-                      onImageClick={(i) => openModal(project, i)}
-                      className="bg-gray-200 rounded-full p-1 h-10 w-10 flex items-center justify-center border-2 border-white"
+
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        openModal(project, 0);
+                      }}
+                      className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-all 
+                       group-hover:scale-110"
                     >
-                      <ArrowUpRight
-                        onClick={() => openModal(project, 0)}
-                        className="w-5 h-5 md:w-6 md:h-6 text-primary mt-1 flex-shrink-0"
-                      />
-                    </div>
+                      <ArrowUpRight className="w-5 h-5 md:w-6 md:h-6 text-[#6941C6]" />
+                    </button>
                   </div>
 
-                  <p className="text-muted-foreground text-[#020202] dark:text-white text-sm line-clamp-2">
+                  <p className="text-sm text-muted-foreground text-[#020202] dark:text-white line-clamp-2 flex-1">
                     {project.description}
                   </p>
+                </div>
 
-                  <div className="flex items-center gap-3 pt-3 md:pt-4 border-t border-border">
+                <div className="border-t border-border px-5 md:px-6 py-4 flex items-center justify-between gap-3 mt-auto">
+                  <div>
                     <img
                       src={Logo}
-                      alt="Logo"
-                      className="h-4 md:h-5 w-auto dark:hidden"
+                      alt="Company logo"
+                      className="h-5 w-auto dark:hidden"
                     />
                     <img
                       src={DarkLogo}
-                      alt="Dark Logo"
-                      className="h-4 md:h-5 w-auto hidden dark:block"
+                      alt="Company logo"
+                      className="h-5 w-auto hidden dark:block"
                     />
-                    <span className="text-xs md:text-sm text-muted-foreground dark:text-white">
-                      {project.date}
-                    </span>
                   </div>
+                  <span className="text-base md:px-6 py-3 text-[#6941C6] dark:text-[#6941C6] font-medium">
+                    {project?.date}
+                  </span>
                 </div>
               </div>
             ))}

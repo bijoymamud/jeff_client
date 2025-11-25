@@ -21,10 +21,6 @@ const Footer = () => {
                 className=" w-auto hidden dark:block"
               />
             </div>
-            <p className="text-gray-600 dark:text-white text-sm sm:text-base max-w-xs leading-relaxed">
-              We offer Structural & Misc metal design assist, Stair design & PE
-              & Calculation.
-            </p>
           </div>
 
           {/* Quick Links */}
@@ -36,31 +32,31 @@ const Footer = () => {
               <li>
                 <a
                   href="#"
-                  className="text-gray-600 hover:text-gray-900 transition block text-sm sm:text-base dark:text-white"
+                  className="text-gray-600 hover:text-gray-900 hover:dark:text-gray-200 transition block text-sm sm:text-base dark:text-white"
                 >
                   Home
                 </a>
               </li>
               <li>
                 <Link
-                  to="/about"
-                  className="text-gray-600 hover:text-gray-900 transition block text-sm sm:text-base dark:text-white"
+                  to="/#about_us"
+                  className="text-gray-600 hover:text-gray-900 hover:dark:text-gray-200 transition block text-sm sm:text-base dark:text-white"
                 >
                   About us
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/projects"
-                  className="text-gray-600 hover:text-gray-900 transition block text-sm sm:text-base dark:text-white"
+                  to="/#projects"
+                  className="text-gray-600 hover:text-gray-900 hover:dark:text-gray-200 transition block text-sm sm:text-base dark:text-white"
                 >
                   Our Projects
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/testimonials"
-                  className="text-gray-600 hover:text-gray-900 transition block text-sm sm:text-base dark:text-white"
+                  to="/#testimonial"
+                  className="text-gray-600 hover:text-gray-900 hover:dark:text-gray-200 transition block text-sm sm:text-base dark:text-white"
                 >
                   Testimonials
                 </Link>

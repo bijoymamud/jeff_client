@@ -1,6 +1,6 @@
-
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import BannerVideo from "../../../assets/video/D05 Video.mp4";
+import BannerPoster from "../../../assets/video/videoBanner.jpg";
 import { IoVolumeMuteOutline, IoVolumeHighOutline } from "react-icons/io5";
 import { BsPlayFill, BsPauseFill } from "react-icons/bs";
 
@@ -12,122 +12,122 @@ const expo = [
 
 export default function Banner() {
   const videoRef = useRef(null);
-  const [isMuted, setIsMuted] = useState(true);
-  const [isPlaying, setIsPlaying] = useState(true); // AutoPlay = true on load
+  const [isMuted, setIsMuted] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [showVideo, setShowVideo] = useState(false);
 
-  const toggleMute = () => {
-    if (videoRef.current) {
-      videoRef.current.muted = !isMuted;
-      setIsMuted(!isMuted);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowVideo(true);
+
+      setTimeout(() => {
+        if (videoRef.current) {
+          videoRef.current.play().catch(() => {
+            videoRef.current.muted = true;
+            setIsMuted(true);
+            videoRef.current.play();
+          });
+          setIsPlaying(true);
+        }
+      }, 100);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const togglePlayPause = () => {
+    if (!videoRef.current || !showVideo) return;
+
+    if (isPlaying) {
+      videoRef.current.pause();
+      setIsPlaying(false);
+    } else {
+      videoRef.current.play();
+      setIsPlaying(true);
     }
   };
 
-  const togglePlayPause = () => {
-    if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause();
-      } else {
-        videoRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
-    }
+  const toggleMute = () => {
+    if (!videoRef.current) return;
+    videoRef.current.muted = !isMuted;
+    setIsMuted(!isMuted);
   };
 
   return (
     <div className="py-8 sm:py-10 md:py-10 dark:bg-[#030712]">
-      <div className="flex flex-col md:grid md:grid-cols-4 gap-6 md:gap-[24px] items-start md:items-center md:h-[81vh] min-h-screen md:min-h-full">
-        {/* Text Content - unchanged */}
-        <div className="order-2 md:order-1 md:col-span-2 flex flex-col justify-center md:px-0">
-          {/* ... your existing text, button, stats ... */}
-          <h1 className="text-3xl sm:text-5xl md:text-[54px] dark:text-white leading-tight font-bold text-center md:text-start">
-            Engineered <span className="text-label">for</span>
+      <div className="flex flex-col md:grid md:grid-cols-4 gap-6 md:gap-[24px] items-start md:items-center md:h-[81vh] ">
+        <div className="order-2 md:order-1 mt-5 md:mt-0 md:col-span-2 flex flex-col justify-center md:px-0">
+          <h1 className="text-4xl md:text-[54px] dark:text-white leading-tight font-bold text-center md:text-start">
+            Detailed <span className="text-label">for</span>
           </h1>
-          <h1 className="text-3xl sm:text-5xl md:text-[54px] dark:text-white leading-tight font-bold text-center md:text-start">
-            Excellence Trusted <span className="text-label">by</span>{" "}
+          <h1 className="text-4xl md:text-[54px] dark:text-white leading-tight font-bold text-center md:text-start">
+            Excellence Trusted
           </h1>
-          <h1 className="text-3xl sm:text-5xl md:text-[54px] leading-tight font-bold text-center md:text-start">
-            <span className="text-label">Industries</span> Worldwide
+          <h1 className="text-4xl md:text-[54px] leading-tight font-bold text-center md:text-start">
+            <span className="text-label">Nationwide</span>{" "}
           </h1>
 
-          <p className="text-label text-lg sm:text-xl md:text-[24px] py-8 md:py-10 max-w-full md:max-w-[636px] text-center md:text-start">
-            Expertise in Structural & Miscellaneous Steel Fabrication and
-            Detailing. We specialize in light to mid-size structural steel,
-            miscellaneous metals, stair systems, wastewater infrastructure, and
-            renovation work.
+          <p className="text-[#868686] text-lg sm:text-xl md:text-[24px] py-8 md:py-10 max-w-full md:max-w-[636px] dark:text-gray-200  md:text-start text-justify">
+            Our extensive experience in structural steel, miscellaneous metals,
+            and steel stair design and fabrication enables us to deliver
+            precise, code-compliant detailing that improves coordination,
+            reduces errors, and elevates overall project quality
           </p>
 
-          <button className="bg-button border-2 border-white px-8 py-4 w-full sm:w-[389px] h-[54px] hover:cursor-pointer rounded-[12px] shadow-md hover:shadow-lg transition-all text-background font-medium text-lg">
+          <a
+            href="/#quote"
+            className="inline-block bg-button border-2 border-white px-8 py-4 w-full sm:w-[389px] h-[54px] rounded-[12px] 
+             shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 text-background font-medium text-lg text-center"
+          >
             Request a Quote
-          </button>
-
-          <div className="mt-12 md:mt-36">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-[24px]">
-              {expo.map((ex) => (
-                <div
-                  key={ex.id}
-                  className="bg-[#F5F5F5] dark:bg-[#111827] p-6 border-2 border-white dark:border-none rounded-lg text-center shadow-sm hover:shadow-md transition-shadow"
-                >
-                  <h2 className="text-3xl sm:text-4xl dark:text-white font-bold text-primary">
-                    {ex.amount}
-                  </h2>
-                  <p className="text-base sm:text-[19px] dark:text-white text-labela mt-2">
-                    {ex.title}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
+          </a>
         </div>
 
-        {/* Video with Play/Pause + Mute/Unmute Controls */}
-        <div className="order-1 md:order-2 md:col-span-2 w-full h-[40vh] sm:h-[50vh] md:h-full flex items-center justify-center bg-black rounded-lg overflow-hidden shadow-2xl relative">
-          <video
-            ref={videoRef}
-            src={BannerVideo}
-            autoPlay
-            loop
-            muted={isMuted}
-            playsInline
-            className="w-full h-full object-cover md:object-contain"
-          />
+        <div className="order-1 md:order-2 md:col-span-2 w-full h-[40vh] sm:h-[50vh] md:h-full rounded-lg overflow-hidden shadow-2xl relative bg-black">
+          {!showVideo && (
+            <div
+              className="absolute inset-0 w-full h-full bg-cover bg-center"
+              style={{ backgroundImage: `url(${BannerPoster})` }}
+            />
+          )}
 
-          {/* Control Buttons */}
-          <div className="absolute bottom-4 right-4 flex gap-3 z-10">
-            {/* Play / Pause Button */}
-            <button
-              onClick={togglePlayPause}
-              className="bg-white/90 hover:bg-white text-black p-3 rounded-full shadow-lg hover:shadow-xl transition-all backdrop-blur-sm border border-gray-300"
-              aria-label={isPlaying ? "Pause video" : "Play video"}
-            >
-              {isPlaying ? (
-                <BsPauseFill className="w-6 h-6" />
-              ) : (
-                <BsPlayFill className="w-6 h-6 ml-0.5" />
-              )}
-            </button>
+          {showVideo && (
+            <video
+              ref={videoRef}
+              src={BannerVideo}
+              loop
+              muted={isMuted}
+              playsInline
+              className="w-full h-full object-cover md:object-contain"
+            />
+          )}
 
-            {/* Mute / Unmute Button */}
-            <button
-              onClick={toggleMute}
-              className="bg-white/90 hover:bg-white text-black p-3 rounded-full shadow-lg hover:shadow-xl transition-all backdrop-blur-sm border border-gray-300"
-              aria-label={isMuted ? "Unmute video" : "Mute video"}
-            >
-              {isMuted ? (
-                <IoVolumeMuteOutline className="w-6 h-6" />
-              ) : (
-                <IoVolumeHighOutline className="w-6 h-6" />
-              )}
-            </button>
-          </div>
+          {showVideo && (
+            <div className="absolute bottom-6 right-6 flex gap-4 z-30 md:bg-black/70 md:border-2 md:border-white backdrop-blur-md rounded-full md:p-4 p-2 shadow-2xl">
+              <button
+                onClick={togglePlayPause}
+                className="bg-white hover:bg-gray-100 text-black p-4 rounded-full transition-all hover:scale-110 shadow-lg"
+                aria-label={isPlaying ? "Pause" : "Play"}
+              >
+                {isPlaying ? (
+                  <BsPauseFill className="md:w-8 w-4 h-4 md:h-8" />
+                ) : (
+                  <BsPlayFill className="md:w-8 w-4 h-4 md:h-8 ml-1" />
+                )}
+              </button>
 
-          {!isPlaying && (
-            <button
-              onClick={togglePlayPause}
-              className="absolute inset-0 flex items-center justify-center z-10 bg-black/40 backdrop-blur-sm hover:bg-black/50 transition-all"
-              aria-label="Play video"
-            >
-              <BsPlayFill className="w-20 h-20 text-white drop-shadow-2xl" />
-            </button>
+              <button
+                onClick={toggleMute}
+                className="bg-white hover:bg-gray-100 text-black p-4 rounded-full transition-all hover:scale-110 shadow-lg"
+                aria-label={isMuted ? "Unmute" : "Mute"}
+              >
+                {isMuted ? (
+                  <IoVolumeMuteOutline className="md:w-8 md:h-8" />
+                ) : (
+                  <IoVolumeHighOutline className="md:w-8 md:h-8" />
+                )}
+              </button>
+            </div>
           )}
         </div>
       </div>

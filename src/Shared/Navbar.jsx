@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Menu, X, Home, Info, Briefcase, Mail } from "lucide-react";
 import Logo from "../assets/jeff_logo.png";
@@ -19,7 +18,7 @@ export default function Navbar() {
     { name: "About", icon: Info, to: "/", hash: "about_us" },
     { name: "Projects", icon: Briefcase, to: "/", hash: "projects" },
     { name: "Testimonial", icon: Briefcase, to: "/", hash: "testimonial" },
-    { name: "Contact", icon: Mail, to: "/", hash: "contact" },
+    { name: "Contact", icon: Mail, to: "/", hash: "quote" },
   ];
 
   useEffect(() => setIsOpen(false), [location.pathname]);
